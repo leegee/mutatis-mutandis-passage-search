@@ -6,6 +6,11 @@ and Google Colab to create embeddings searched in Lance through a Python FastAPI
 
 A sample dataset, and indeed Lance indexes, are available upon request.
 
+## Motivation
+
+> How can historical references be found to the people - like yours truely - who modern
+> clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?
+
 ## Example Use
 
 From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find simillar':
