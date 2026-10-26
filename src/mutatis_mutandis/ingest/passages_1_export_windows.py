@@ -9,9 +9,9 @@ import lancedb
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from lib.corpus_db import get_connection
-from lib.corpus_config import OUT_DIR
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_config import OUT_DIR
+from mutatis_mutandis.lib.corpus_logging import logger
 
 LANCE_DIR = OUT_DIR / "indexes/lance_albinism"
 EMB_OUTPUT_DIR = OUT_DIR / "export/source_tokens"

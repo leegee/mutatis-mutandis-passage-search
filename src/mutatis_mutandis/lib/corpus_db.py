@@ -14,8 +14,8 @@ import psycopg
 from psycopg import sql, Connection
 import time
 
-import lib.corpus_config as config
-from lib.corpus_logging import get_logger
+import mutatis_mutandis.lib.corpus_config as config
+from mutatis_mutandis.lib.corpus_logging import get_logger
 
 logger = get_logger(__name__)
 

@@ -1,5 +1,5 @@
 """
-passage_search_pipeline/service.py
+mutatis_mutandis/service.py
 
 Application layer shared by the CLI and the HTTP API. Owns the LanceDB
 connection, the (thread-safe) query encoder, and a small cache of stored
@@ -17,17 +17,17 @@ from typing import List, Optional, Tuple
 
 import lancedb
 
-from lib.corpus_db import get_connection
-from lib.corpus_logging import get_logger
-from lib.macberth import encode_passage_query
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_logging import get_logger
+from mutatis_mutandis.lib.macberth import encode_passage_query
 
-from passage_search_pipeline.core import (
+from mutatis_mutandis.core import (
     load_passage_vector,
     normalise_vector,
     search_passages,
 )
-from passage_search_pipeline.texts import fetch_passage_texts
-from passage_search_pipeline.text_search import search_text_passages
+from mutatis_mutandis.texts import fetch_passage_texts
+from mutatis_mutandis.text_search import search_text_passages
 
 logger = get_logger("passage_search.service")
 

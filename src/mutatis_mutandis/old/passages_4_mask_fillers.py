@@ -80,10 +80,10 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from lib.corpus_logging import logger
-from lib.corpus_config import OUT_DIR
-from lib.macberth import load_macberth
-from lib.passage_stem import (
+from mutatis_mutandis.lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_config import OUT_DIR
+from mutatis_mutandis.lib.macberth import load_macberth
+from mutatis_mutandis.lib.passage_stem import (
     STOP,
     stem_key,
     Groups,
@@ -91,7 +91,7 @@ from lib.passage_stem import (
     content_word,
     span_of,
 )
-from lib.passage_db import (
+from mutatis_mutandis.lib.passage_db import (
     SCOPES,
     fetch_hits,
     fetch_phrase_hits,
@@ -716,7 +716,7 @@ def main() -> None:
     conn = None
     csv_passages = None
     if args.source == "db":
-        from lib.corpus_db import get_connection
+        from mutatis_mutandis.lib.corpus_db import get_connection
         conn = get_connection(application_name="passage-mask-fillers")
         periods = make_periods(args.start_year, args.end_year, args.period_size)
         scope_label = args.scope

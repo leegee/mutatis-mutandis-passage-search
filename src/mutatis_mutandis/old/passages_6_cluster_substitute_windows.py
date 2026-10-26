@@ -54,7 +54,7 @@ from pathlib import Path
 
 import numpy as np
 
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_logging import logger
 
 
 MASK_RE = re.compile(r"\[\[(.+?)\]\]")

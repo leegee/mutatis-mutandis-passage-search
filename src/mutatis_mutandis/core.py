@@ -1,5 +1,5 @@
 """
-passage_search_pipeline/core.py
+mutatis_mutandis/core.py
 
 Framework-free retrieval primitives for MacBERTh passage embeddings stored
 in year-bucketed LanceDB tables. No argparse, no logging config, no web
@@ -27,8 +27,8 @@ from typing import List, Optional
 
 import numpy as np
 
-from lib.corpus_config import LANCE_MODEL_NAME
-from lib.corpus_logging import get_logger
+from mutatis_mutandis.lib.corpus_config import LANCE_MODEL_NAME
+from mutatis_mutandis.lib.corpus_logging import get_logger
 
 logger = get_logger("passage_search.core")
 

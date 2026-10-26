@@ -12,11 +12,11 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from lib.corpus_db import get_connection
-from lib.corpus_config import MAPPED_GOOGLE_DRIVE
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_config import MAPPED_GOOGLE_DRIVE
+from mutatis_mutandis.lib.corpus_logging import logger
 
-from lib.corpus_albinism import CORPUS_SQL
+from mutatis_mutandis.lib.corpus_albinism import CORPUS_SQL
 
 # Local filesystem output directory
 EMB_OUTPUT_DIR = MAPPED_GOOGLE_DRIVE / Path("souroce_tokens")

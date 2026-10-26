@@ -7,10 +7,10 @@ from pathlib import Path
 
 import lancedb
 
-from lib.corpus_config import LANCE_INDEXES_DIR, OUT_DIR
-from lib.corpus_db import get_connection
-from lib.macberth import get_pytorch_model, encode_passage_query
-from passage_search_pipeline.passages_search import (
+from mutatis_mutandis.lib.corpus_config import LANCE_INDEXES_DIR, OUT_DIR
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.macberth import get_pytorch_model, encode_passage_query
+from mutatis_mutandis.passages_search import (
     REPRESENTATIONS,
     fetch_passage_text,
     search_passages,

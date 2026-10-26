@@ -5,8 +5,8 @@ import csv
 import re
 
 
-from lib.corpus_db import get_connection
-from lib.corpus_config import OUT_DIR
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_config import OUT_DIR
 
 
 OUTPUT = OUT_DIR / Path("eebo_word_frequencies.csv")

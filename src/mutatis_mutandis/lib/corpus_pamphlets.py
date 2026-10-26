@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from lib.cannonical_rules import CanonicalRule, CanonicalRules
+from mutatis_mutandis.lib.cannonical_rules import CanonicalRule, CanonicalRules
 
 CORPUS_MIN_YEAR = 1600
 CORPUS_MAX_YEAR = 1650

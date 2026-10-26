@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-passage_search_pipeline/passages_search.py
+mutatis_mutandis/passages_search.py
 
 Search MacBERTh passage embeddings stored in year-bucketed LanceDB tables.
 
@@ -24,14 +24,14 @@ Optional negative re-ranking:
 
 Examples:
 
-    python src/passage_search_pipeline/passages_search.py \
+    python src/mutatis_mutandis/passages_search.py \
         --query "white hair" --limit 30
 
-    python src/passage_search_pipeline/passages_search.py \\
+    python src/mutatis_mutandis/passages_search.py \\
         --vector-id ef2f4aaf68dc6c924a2f1218e470a555060be2cb886a0ef1ebf169b800508f8a \
         --limit 30
 
-    python src/passage_search_pipeline/passages_search.py \
+    python src/mutatis_mutandis/passages_search.py \
         --query "white hair" --representation l8 --limit 50 \
         --negative-id dfbee39870fbbababa5fc24da247fb8468a82350bca1170209458b84568be2c3 \
         --negative-id afee38e3452766ffd28bc725ba733cec845fe8cb338c8ef93a52f850223fdbe7 \
@@ -56,13 +56,13 @@ from typing import List, Optional
 import lancedb
 import numpy as np
 
-from lib.corpus_config import (
+from mutatis_mutandis.lib.corpus_config import (
     LANCE_INDEXES_DIR,
     LANCE_MODEL_NAME,
 )
-from lib.corpus_db import get_connection
-from lib.corpus_logging import get_logger
-from lib.macberth import PASSAGE_REPRESENTATIONS, encode_passage_query
+from mutatis_mutandis.lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_logging import get_logger
+from mutatis_mutandis.lib.macberth import PASSAGE_REPRESENTATIONS, encode_passage_query
 from tier1.vector_writer import year_bucket  # noqa: F401  (kept for callers)
 
 logger = get_logger("passages_search")

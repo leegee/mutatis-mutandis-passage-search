@@ -1,5 +1,5 @@
 """
-passage_search_pipeline/text_search.py
+mutatis_mutandis/text_search.py
 
 Keyword / phrase search over the Postgres `tokens` + `documents` tables.
 

@@ -9,8 +9,8 @@ from pathlib import Path
 import lancedb
 import numpy as np
 
-from lib.corpus_config import LANCE_INDEXES_DIR, OUT_DIR
-from lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_config import LANCE_INDEXES_DIR, OUT_DIR
+from mutatis_mutandis.lib.corpus_db import get_connection
 from passage_search_pipeline import passages_search as ps
 
 

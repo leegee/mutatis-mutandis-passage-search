@@ -1,4 +1,4 @@
-# passage_search_pipeline/passages_reverse_diachronic_search.py
+# mutatis_mutandis/passages_reverse_diachronic_search.py
 
 
 """
@@ -13,7 +13,7 @@ is retained as a separate edge.
 This module does not persist runs or establish historical semantic equivalence.
 Retrieval distances indicate embedding similarity, not historical relevance.
 
-    python src/passage_search_pipeline/passages_reverse_diachronic_search.py \
+    python src/mutatis_mutandis/passages_reverse_diachronic_search.py \
     --query "albino" \
     --periods "2000-2049,1950-1999,1900-1949,1850-1899" \
     --representation mean4 \
@@ -34,12 +34,12 @@ import numpy as np
 import lancedb
 
 
-from lib.macberth import encode_passage_query
-from lib.corpus_config import LANCE_INDEXES_DIR
-from lib.corpus_logging import logger
-from lib.corpus_db import get_connection
+from mutatis_mutandis.lib.macberth import encode_passage_query
+from mutatis_mutandis.lib.corpus_config import LANCE_INDEXES_DIR
+from mutatis_mutandis.lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_db import get_connection
 
-from passage_search_pipeline.passages_search import (
+from mutatis_mutandis.passages_search import (
     REPRESENTATIONS,
     search_passages,
     fetch_passage_text,

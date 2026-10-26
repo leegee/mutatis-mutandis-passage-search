@@ -1,5 +1,5 @@
 """
-passage_search_pipeline/schemas.py
+mutatis_mutandis/schemas.py
 
 Pydantic request/response models for the HTTP API.
 """
@@ -10,7 +10,7 @@ from typing import Annotated, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
 
-from lib.macberth import PASSAGE_REPRESENTATIONS
+from mutatis_mutandis.lib.macberth import PASSAGE_REPRESENTATIONS
 
 # passage_ids in this corpus are 64-char lowercase hex (sha256). Loosen the
 # pattern here if you ever introduce other ID formats.

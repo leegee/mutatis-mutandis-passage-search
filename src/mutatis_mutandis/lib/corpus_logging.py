@@ -7,7 +7,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 from typing import Any, Callable
-from lib.corpus_config import LOG_DIR
+from mutatis_mutandis.lib.corpus_config import LOG_DIR
 
 EmitFn = Callable[[str, str], None]
 

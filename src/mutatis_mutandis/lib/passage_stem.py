@@ -13,11 +13,10 @@ from functools import lru_cache
 
 import numpy as np
 
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_logging import logger
 
 
-# Function words, including Early Modern forms (adapted from
-# eebo_word_frequencies.py).
+# Function words, including Early Modern forms (adapted from word_frequencies.py).
 STOP = set("""
 a an the and or but nor yet so if unless whether as than at by for from in
 into of off on onto out over through to up upon with within without about

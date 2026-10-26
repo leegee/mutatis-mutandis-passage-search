@@ -5,8 +5,8 @@ import sys
 
 import pyarrow.parquet as pq
 
-from lib.corpus_config import OUT_DIR
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_config import OUT_DIR
+from mutatis_mutandis.lib.corpus_logging import logger
 
 # D:\src\mutatis-mutandis\out\tier1
 CHECKPOINT_DIR = OUT_DIR / "export" / "_checkpoints"

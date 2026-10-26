@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from lib.cannonical_rules import CanonicalRule, CanonicalRules
+from mutatis_mutandis.lib.cannonical_rules import CanonicalRule, CanonicalRules
 
 CORPUS_MIN_YEAR = 0
 CORPUS_MAX_YEAR = 2026
@@ -172,8 +172,8 @@ ORDER BY d.pub_year NULLS LAST, d.title
 
 
 def select_white_corpus_doc_ids():
-    from lib.corpus_db import get_connection
-    from lib.corpus_logging import logger
+    from mutatis_mutandis.lib.corpus_db import get_connection
+    from mutatis_mutandis.lib.corpus_logging import logger
 
     con = get_connection()
     try:

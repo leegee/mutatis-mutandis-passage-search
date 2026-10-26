@@ -398,7 +398,7 @@ def random_positions(
     rng: random.Random,
 ) -> list[tuple[int, int]]:
     """Random content-word positions pooled over all passages (csv mode)."""
-    from lib.passage_stem import content_word  # local to avoid cycles
+    from mutatis_mutandis.lib.passage_stem import content_word  # local to avoid cycles
 
     pool = [
         (p_idx, w_idx)
@@ -416,7 +416,7 @@ def one_position_per_passage(
     rng: random.Random,
 ) -> list[tuple[int, int]]:
     """One random content word per baseline window (db modes)."""
-    from lib.passage_stem import content_word
+    from mutatis_mutandis.lib.passage_stem import content_word
 
     out: list[tuple[int, int]] = []
     for p_idx, p in enumerate(passages):

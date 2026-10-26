@@ -1,21 +1,21 @@
 """
-passage_search_pipeline/cli.py
+mutatis_mutandis/cli.py
 
 Command-line front end. Uses the same service layer as the API.
 
-    python src/passage_search_pipeline/cli.py --query "white hair" --limit 30
-    python src/passage_search_pipeline/cli.py --vector-id <passage_id>
-    python src/passage_search_pipeline/cli.py --query "white hair" \
+    python src/mutatis_mutandis/cli.py --query "white hair" --limit 30
+    python src/mutatis_mutandis/cli.py --vector-id <passage_id>
+    python src/mutatis_mutandis/cli.py --query "white hair" \
         --negative-id <id> --negative-id <id> --beta 0.6
 
 
-    python src/passage_search_pipeline/cli.py --query "white hair" --limit 30
+    python src/mutatis_mutandis/cli.py --query "white hair" --limit 30
 
-    python src/passage_search_pipeline/cli.py \
+    python src/mutatis_mutandis/cli.py \
         --vector-id ef2f4aaf68dc6c924a2f1218e470a555060be2cb886a0ef1ebf169b800508f8a \
         --limit 30
 
-    python src/passage_search_pipeline/cli.py \
+    python src/mutatis_mutandis/cli.py \
         --query "white hair" --representation l8 --limit 50 \
         --negative-id dfbee39870fbbababa5fc24da247fb8468a82350bca1170209458b84568be2c3 \
         --negative-id afee38e3452766ffd28bc725ba733cec845fe8cb338c8ef93a52f850223fdbe7 \
@@ -28,11 +28,11 @@ from __future__ import annotations
 
 import argparse
 
-from lib.corpus_config import LANCE_INDEXES_DIR
-from lib.corpus_logging import get_logger
-from lib.macberth import PASSAGE_REPRESENTATIONS
+from mutatis_mutandis.lib.corpus_config import LANCE_INDEXES_DIR
+from mutatis_mutandis.lib.corpus_logging import get_logger
+from mutatis_mutandis.lib.macberth import PASSAGE_REPRESENTATIONS
 
-from passage_search_pipeline.service import PassageSearchService, SearchParams
+from mutatis_mutandis.service import PassageSearchService, SearchParams
 
 logger = get_logger("passage_search.cli")
 

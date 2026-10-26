@@ -11,13 +11,13 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from lib.corpus_config import (
+from mutatis_mutandis.lib.corpus_config import (
     LANCE_INDEXES_DIR,
     LANCE_BUCKET_SIZE,
     LANCE_MODEL_NAME,
     MAPPED_GOOGLE_DRIVE,
 )
-from lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_logging import logger
 from tier1.vector_writer import year_bucket, vector_index_partitions
 
 

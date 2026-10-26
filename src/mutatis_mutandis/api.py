@@ -1,5 +1,5 @@
 """
-passage_search_pipeline/api.py
+mutatis_mutandis/api.py
 
 FastAPI application.
 
@@ -25,16 +25,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-from lib.corpus_config import LANCE_INDEXES_DIR
-from lib.macberth import PASSAGE_REPRESENTATIONS
+from mutatis_mutandis.lib.corpus_config import LANCE_INDEXES_DIR
+from mutatis_mutandis.lib.macberth import PASSAGE_REPRESENTATIONS
 
-from passage_search_pipeline.core import VectorNotFoundError
-from passage_search_pipeline.schemas import (
+from mutatis_mutandis.core import VectorNotFoundError
+from mutatis_mutandis.schemas import (
     SearchRequest,
     SearchResponse,
     TextSearchRequest,
 )
-from passage_search_pipeline.service import (
+from mutatis_mutandis.service import (
     PassageSearchService,
     SearchParams,
     TextSearchParams,

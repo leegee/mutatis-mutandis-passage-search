@@ -11,9 +11,9 @@ real service) does not run; get_service is overridden instead.
 import pytest
 from fastapi.testclient import TestClient
 
-from passage_search_pipeline.api import app, get_service
-from passage_search_pipeline.core import VectorNotFoundError
-from passage_search_pipeline.service import SearchOutcome
+from mutatis_mutandis.api import app, get_service
+from mutatis_mutandis.core import VectorNotFoundError
+from mutatis_mutandis.service import SearchOutcome
 
 PID = "ef2f4aaf68dc6c924a2f1218e470a555060be2cb886a0ef1ebf169b800508f8a"
 

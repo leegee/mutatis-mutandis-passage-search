@@ -51,17 +51,17 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from lib.corpus_config import OUT_DIR
-from lib.corpus_logging import logger
-from lib.corpus_db import get_connection
+from mutatis_mutandis.lib.corpus_config import OUT_DIR
+from mutatis_mutandis.lib.corpus_logging import logger
+from mutatis_mutandis.lib.corpus_db import get_connection
 
 
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
-from lib.passage_stem import stem_key
-from lib.passage_db import SCOPES, fetch_windows
+from mutatis_mutandis.lib.passage_stem import stem_key
+from mutatis_mutandis.lib.passage_db import SCOPES, fetch_windows
 
 
 def csv_words(value: str) -> set[str]:
