@@ -24,105 +24,106 @@ Adjust the date range to find historical matches, 0 AD to 1400, and scroll to vi
 
 ![More results](./README/albino_0-1400AD_b.png)
 
-## Ingestion
 
-    CREATE TABLE documents (
-      corpus TEXT NOT NULL,
-      doc_id TEXT NOT NULL,
-      filepath TEXT NOT NULL,
-      title TEXT,
-      author TEXT,
-      pub_year INTEGER,
-      publisher TEXT,
-      pub_place TEXT,
-      source_date_raw TEXT,
-      token_count INTEGER,
-      lang CHAR(3) NOT NULL DEFAULT 'eng',
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP GENERATED ALWAYS AS (CURRENT_TIMESTAMP) STORED, -- from pg v12
-      PRIMARY KEY (corpus, doc_id)
-    );
 
-    CREATE TABLE tokens (
-      corpus TEXT NOT NULL,
-      doc_id TEXT NOT NULL,
-      token_idx INTEGER NOT NULL,
-      token TEXT NOT NULL,
-      raw_token text,
-      canonical TEXT,
-      PRIMARY KEY (corpus, doc_id, token_idx),
-      FOREIGN KEY (corpus, doc_id)
-          REFERENCES documents(corpus, doc_id)
-          ON DELETE CASCADE
-    );
+# Semantic Passage Search Across Historical Texts
 
-The `ingest` directory contains cost-conscious scripts for reading the above database (available on request) to produce token Parquet shards placed  on Google Drive for the standalone Google Colab script (`ingest/colab_embed_passages.py`) which creates into passage-level MacBERTh embeddings, without requiring PostgreSQL or LanceDB. It generates 768-dimensional vectors using layer 8, the final layer, and the mean of the final four layers, dividing text into 40-word windows with a 20-word hop (50% overlap) while preserving document metadata and original token offsets. Per-document checkpoints, validation, and atomic publication support safe resumption after interruptions. As it is stand-alone, configuration should remain synchronised with lib.corpus_config and lib.macberth, one of the many comporises made in unfunded research. A further script adds those shards to the Lance database reading for searching.
+## A research demonstration using contextual embeddings
 
-Different window sizes and embedding methods are tried in the main project (`mutatis-mutandis`) where the above configuration has proven for the task at hand.
+### Research problem
 
-## Semantic Search Engine Layout
+How can researchers find historically significant passages when the language used to describe a subject changes over time?
 
-| File                          | Role                                                                                           |
-|-------------------------------|------------------------------------------------------------------------------------------------|
-| `ingest/`                     | As above |
-| `static/`                     | Small Solid JS app providing a search interface to the Lance and PG databases |
-| `core.py`                     | Retrieval primitives: normalise, table selection, stored vectors, search + negative re-ranking |
-| `texts.py`                    | Batched Postgres lookup (one query for all hits) |
-| `service.py`                  | `PassageSearchService` + `SearchParams`: shared by CLI and API |
-| `schemas.py`                  | Pydantic request/response models |
-| `api.py`                      | FastAPI app |
-| `cli.py`                      | Command-line front end |
-| `static/index.html`           | Single-file web UI (SolidJS, no build step), served at `/ui/` |
-| `passages_search.py`          | Optional shim so old `ps.search_passages` imports keep working |
-| `../lib/macberth-huggingface` | A copy of the MacBERTh model from Hugging Face |
+A search for a modern term can be effective when that term was also used in the period being studied. It is much less effective when the terminology is recent, when earlier writers described the same phenomena in different language, or when a concept appears indirectly through metaphor, religious imagery or narrative.
 
-## Search UI
+This project explores whether contextual language models can help researchers discover such material. The demonstration uses arepresentations of extreme bodily whiteness in literary and religious texts, with the modern term *albino* providing a starting point for investigating earlier descriptions. Disclosure: the author has Oculocutaneous albinism.
 
-  uvicorn mutatis_mutandis.api:app --app-dir src --port 8000
+The objective is not to establish that historical figures described as white, pale or extraordinary had albinism. It is to develop a research instrument that can retrieve potentially relevant passages beyond the limits of exact-word search, while preserving enough textual and bibliographic information for researchers to assess the evidence.
 
-  http://localhost:8000/
-  http://localhost:8000/docs
+### Worked reverse diachronic example: from a modern medical text to medieval literature
 
-Use one worker as each worker process loads its own copy of the model.
+**Step 1 — Begin with modern terminology.**
 
-## Examples
+I searched passages dated 1900–2000 using the query `albino` and the `l8` representation (the eighth layer of the MacBERTh model). The system returned 30 results. I selected the highest-ranked passage, from A. J. Psaila’s *Albinism – A Case Report* (1972).
 
-    curl -X POST localhost:8000/search -H 'content-type: application/json' \
-      -d '{"query": "white hair", "representation": "l8", "limit": 20}'
+The selected passage discusses forms of albinism, including a description of partial albinism in which hair is yellow or light brown. This provides a modern medical context from which to explore historical descriptions, although the selected passage is only one fragment of a larger text.
 
-    curl -X POST localhost:8000/search -H 'content-type: application/json' \
-      -d '{"query": "white hair",
-           "negative_ids": ["dfbee39870fbbababa5fc24da247fb8468a82350bca1170209458b84568be2c3"],
-           "beta": 0.6, "overfetch": 5}'
+**Step 2 — Use the passage as a semantic query.**
 
-    # ids only, skip Postgres entirely
-    curl -X POST localhost:8000/search -H 'content-type: application/json' \
-      -d '{"vector_id": "ef2f4aaf...", "include_text": false}'
+Rather than searching for the word *albino* again, I selected the system’s “find similar” function. This uses the stored vector representation of the selected passage to retrieve other passages with similar representations.
 
-## Status codes
+I restricted the search to the period 1000–1500. The system returned 21 results from the available corpus and date range.
 
-200 ok · 404 unknown `vector_id` · 422 invalid request (or ambiguous vector)
+Among the highest-ranked results were passages from two very different literary and religious sources.
 
-Skipped negatives are reported in the `warnings` array of a 200 response.
+**The English Apocalypse (approximately 1350 in the dataset)**
 
-## Tests
+One result describes the Son of Man:
 
-    pytest ./src/mutatis_mutandis/*test*
+> and the heed of hym and his heeris weren whyte as whyte wolle and as snow, and the iyen of hym as flawme of fier
 
-## Solid UI
+This is a Middle English rendering of the vision in Revelation 1:14, in which the figure's head and hair are described as white like wool and snow. The passage combines extraordinary whiteness with a striking description of the eyes.
 
-`static/index.html` is one file: SolidJS is loaded from jsDelivr through a pinned
-import map, so there is nothing to build. For offline use, download the four
-`solid-js` files named in the import map into `static/vendor/` and point the map
-at `/ui/vendor/...`.
+For a study of the cultural representation of extreme bodily whiteness, this is a promising lead. It provides an opportunity to investigate how whiteness functions in a theological vision and how such descriptions relate to broader traditions of divine appearance, majesty and otherness.
 
-URL options: `?panes=2` (up to 6) enables the multi-pane layout and an
-"+ Add query" button; `?api=http://host:8000` points the page at another origin
-(that server then needs `PASSAGE_SEARCH_CORS_ORIGINS`).
+It is not evidence that the figure has albinism in a modern clinical sense. The value of the retrieval is that it identifies a historically situated representation worth investigating, not that it supplies a retrospective diagnosis.
 
-Form state (queries, settings, excluded passages) is kept in `localStorage`;
-results are not.
+**The Mabinogi: *Pwyll, Prince of Dyfed* (dated approximately 1100 in the dataset)**
 
-Code layout inside the page: one store holding an array of panes; actions that take
-a pane id; components that read their pane by id. Cross-pane features are memos
-over the store (see `docIndex` / `overlaps`).
+Other highly ranked passages describe hunting dogs of dazzling whiteness, including dogs with red ears. Further results from the *Mabinogi* describe a shining white boar and a woman riding a pale white horse.
+
+These passages are not equivalent to the description in *The English Apocalypse*: most concern animals or a narrative figure rather than a medical description of human appearance. Nevertheless, they suggest a possible comparative line of enquiry into the literary use of conspicuous whiteness, including its association with unusual or significant beings.
+
+The results also illustrate a limitation. Semantic similarity does not guarantee that passages address the same subject. Some results will be relevant to the research question; others will be useful only as contextual comparisons, and some will be false positives.
+
+### What the demonstration establishes
+
+The example illustrates a practical form of semantic discovery:
+
+1. Start with a passage that expresses a modern concept.
+1. Retrieve semantically similar passages from an earlier period, without requiring the same terminology.
+1. Inspect the retrieved texts in their bibliographic and historical context.
+1. Evaluate their relevance and develop further questions from the evidence.
+
+The researcher remains responsible for interpretation. The system helps locate material that might otherwise be missed; it does not determine historical meaning or establish conceptual continuity by itself.
+
+The distinction between retrieval and interpretation is central. A passage about divine whiteness, an unusually coloured animal and a clinical description of albinism may share features in the model's representation without expressing the same concept, or they may uncover a shared conceptual field as yet unrecognised by a researcher. The relationship is a question for historical and literary analysis.
+
+### Technical approach
+
+The demonstration combines established language-modelling and vector-search components in a working research application.
+
+- **Corpus and metadata:** Texts are represented in a PostgreSQL database, with document metadata and token-level information extracted from TEI XML and plain-text sources.
+- **Passage construction:** Text is divided into overlapping windows of 40 words, with a 20-word hop. Token offsets and document metadata are retained so retrieved passages can be traced back to their sources.
+- **Embeddings:** Passages are encoded using MacBERTh, a BERT model developed for historical language. The current demonstration uses 768-dimensional representations derived from the model's eighth hidden layer.
+- **Indexing and retrieval:** Passage vectors are stored in Lance, supporting vector search alongside chronological filtering and retrieval by an existing passage vector.
+- **Application:** A Python retrieval layer is exposed through FastAPI and a command-line interface, with a SolidJS search interface for interactive exploration.
+
+The embedding workflow runs separately in Google Colab, with per-document checkpoints and validation to support resumable processing. The resulting vectors can then be incorporated into the local search index.
+
+The implementation is designed to retain source identity, dates and passage offsets throughout retrieval. These are not incidental details: they allow computational results to be inspected as documentary evidence rather than treated as an opaque list of similarity scores.
+
+### Discovery through unexpected semantic connections
+
+The semantic proximity observed by the model does not establish historical equivalence, and as with all texts, results must be evaluated in their textual and historical contexts. Yet unexpected matches are not merely false positives. A search initiated with a modern clinical term can retrieve medieval theological descriptions, mythological narratives and literary representations of extraordinary whiteness. These may not describe the same phenomenon, but their proximity can expose connections between bodies of material that are conventionally studied separately.
+
+The value of the system lies partly in this capacity to generate research leads beyond the vocabulary of the original query. Rather than simply locating known instances of a concept, it can help researchers discover unfamiliar representations, formulate new comparative questions and follow connections across disciplinary boundaries. The resulting hypotheses still require close reading and historical verification; the computational method assists discovery rather than determining interpretation.
+
+### Limitations and next steps
+
+This is a working proof of concept, not a validated claim that semantic retrieval consistently outperforms conventional search. The example demonstrates that the system can retrieve plausible historical leads from a modern starting passage. It does not yet measure recall, precision or the proportion of results that researchers judge useful.
+
+Several issues require further investigation:
+
+- **Retrieval design:** Different passage lengths, embedding representations and ranking strategies produce materially different results. This project's parent project build ensemble embeddings across a larger corpus with a consequentially larger footprint and cost.
+- **Evaluation:** The method needs systematic comparison with keyword-based retrieval and assessment of results by a human researcher.
+
+The next stage would be to construct a curated set of relevant and irrelevant passages, compare retrieval methods, and examine how results vary across periods and genres. The broader research objective is to use computational diachronic semantic search to support rather than replace close reading and historically grounded interpretation.
+
+To that end, the system can be extended to add further models trained on further periods and languages to support much a much wider corpus, so that for example the above query could discover John of Patmos' original language, or Snorri's depiction of Baldr.
+
+### Summary
+
+This project demonstrates an end-to-end research tool for exploring historical texts through contextual semantic search. Its contribution at this stage is a working, inspectable retrieval workflow and a concrete example of how a modern query can lead to potentially relevant material in medieval literature.
+
+The wider methodological question is how computational retrieval can help researchers find evidence when terminology changes, concepts are expressed indirectly, or relevant passages do not share obvious keywords. Answering that question requires both technical evaluation and substantive interpretation of the retrieved texts.
