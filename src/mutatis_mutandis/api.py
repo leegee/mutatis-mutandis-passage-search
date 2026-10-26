@@ -5,7 +5,7 @@ FastAPI application.
 
 Run (from the repo root, one worker: each worker loads its own MacBERTh copy):
 
-    uvicorn passage_search_pipeline.api:app --app-dir src --port 8000
+    uvicorn mutatis_mutandis.api:app --app-dir src --port 8000
 
 Environment:
     PASSAGE_SEARCH_WARMUP        "1" (default) loads the encoder at startup
