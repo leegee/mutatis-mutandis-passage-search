@@ -50,10 +50,16 @@ Adjust the date range to find historical matches, 0 AD to 1400, and scroll to vi
           ON DELETE CASCADE
     );
 
+The `ingest` directory contains cost-conscious scripts for reading the above database (available on request) to produce token Parquet shards placed  on Google Drive for the standalone Google Colab script (`ingest/colab_embed_passages.py`) which creates into passage-level MacBERTh embeddings, without requiring PostgreSQL or LanceDB. It generates 768-dimensional vectors using layer 8, the final layer, and the mean of the final four layers, dividing text into 40-word windows with a 20-word hop (50% overlap) while preserving document metadata and original token offsets. Per-document checkpoints, validation, and atomic publication support safe resumption after interruptions. As it is stand-alone, configuration should remain synchronised with lib.corpus_config and lib.macberth, one of the many comporises made in unfunded research. A further script adds those shards to the Lance database reading for searching.
+
+Different window sizes and embedding methods are tried in the main project (`mutatis-mutandis`) where the above configuration has proven for the task at hand.
+
 ## Semantic Search Engine Layout
 
 | File                          | Role                                                                                           |
 |-------------------------------|------------------------------------------------------------------------------------------------|
+| `ingest/`                     | As above |
+| `static/`                     | Small Solid JS app providing a search interface to the Lance and PG databases |
 | `core.py`                     | Retrieval primitives: normalise, table selection, stored vectors, search + negative re-ranking |
 | `texts.py`                    | Batched Postgres lookup (one query for all hits) |
 | `service.py`                  | `PassageSearchService` + `SearchParams`: shared by CLI and API |
@@ -64,19 +70,14 @@ Adjust the date range to find historical matches, 0 AD to 1400, and scroll to vi
 | `passages_search.py`          | Optional shim so old `ps.search_passages` imports keep working |
 | `../lib/macberth-huggingface` | A copy of the MacBERTh model from Hugging Face |
 
-## Run
+## Search UI
 
-    uvicorn mutatis_mutandis.api:app --app-dir src --port 8000
-
-Web UI: 
+  uvicorn mutatis_mutandis.api:app --app-dir src --port 8000
 
   http://localhost:8000/
+  http://localhost:8000/docs
 
-Interactive API docs:
-
-   http://localhost:8000/docs
-
-Use one worker: each worker process loads its own copy of the model.
+Use one worker as each worker process loads its own copy of the model.
 
 ## Examples
 
