@@ -4,6 +4,8 @@ From a Postgres database of document metadata and tokens extracted from TEI XML 
 uses Manjavacas and Fonteyn's historical BERT model [MacBERTh](https://aclanthology.org/2021.nlp4dh-1.4/) 
 and Google Colab to create embeddings searched in Lance through a Python FastAPI/SolidJS application.
 
+A sample dataset, and indeed Lance indexes, are available upon request.
+
 ## Example Use
 
 From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find simillar':
@@ -16,7 +18,39 @@ Adjust the date range to find historical matches, 0 AD to 1400, and scroll to vi
 
 ![More results](./README/albino_0-1400AD_b.png)
 
-## Layout
+## Ingestion
+
+    CREATE TABLE documents (
+      corpus TEXT NOT NULL,
+      doc_id TEXT NOT NULL,
+      filepath TEXT NOT NULL,
+      title TEXT,
+      author TEXT,
+      pub_year INTEGER,
+      publisher TEXT,
+      pub_place TEXT,
+      source_date_raw TEXT,
+      token_count INTEGER,
+      lang CHAR(3) NOT NULL DEFAULT 'eng',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP GENERATED ALWAYS AS (CURRENT_TIMESTAMP) STORED, -- from pg v12
+      PRIMARY KEY (corpus, doc_id)
+    );
+
+    CREATE TABLE tokens (
+      corpus TEXT NOT NULL,
+      doc_id TEXT NOT NULL,
+      token_idx INTEGER NOT NULL,
+      token TEXT NOT NULL,
+      raw_token text,
+      canonical TEXT,
+      PRIMARY KEY (corpus, doc_id, token_idx),
+      FOREIGN KEY (corpus, doc_id)
+          REFERENCES documents(corpus, doc_id)
+          ON DELETE CASCADE
+    );
+
+## Semantic Search Engine Layout
 
 | File                          | Role                                                                                           |
 |-------------------------------|------------------------------------------------------------------------------------------------|
