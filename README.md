@@ -103,7 +103,7 @@ Skipped negatives are reported in the `warnings` array of a 200 response.
 
     pytest ./src/mutatis_mutandis/*test*
 
-## Web UI
+## Solid UI
 
 `static/index.html` is one file: SolidJS is loaded from jsDelivr through a pinned
 import map, so there is nothing to build. For offline use, download the four
