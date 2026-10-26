@@ -3,8 +3,6 @@ passages_1_export_full.py
 
 Exports one row per document (corpus, doc_id, pub_year, token_idx[], tokens[])
 into parquet shards of DOCS_PER_SHARD documents. Upload EMB_OUTPUT_DIR to Drive.
-
-To export the full corpus later, change TABLE / DOC_TABLE.
 """
 from itertools import groupby
 from pathlib import Path

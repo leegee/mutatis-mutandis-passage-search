@@ -1,5 +1,11 @@
 
-"""Export sparse token windows around qualifying historical albinism targets."""
+"""
+passages_1_export_windows.py
+
+As `passages_1_export_full.py` but exports sparse token windows around qualifying historical albinism targets.
+
+NB currently makes no use of the corpus SQL used in `passages_1_export_full.py`.
+"""
 
 from collections import defaultdict
 from itertools import groupby
