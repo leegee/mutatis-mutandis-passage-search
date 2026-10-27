@@ -1,5 +1,7 @@
 ## Ingestion
 
+See the main project's Tier 0.
+
     CREATE TABLE documents (
       corpus TEXT NOT NULL,
       doc_id TEXT NOT NULL,
@@ -52,7 +54,9 @@ Different window sizes and embedding methods are tried in the main project (`mut
 
 ## Search UI
 
-  uvicorn mutatis_mutandis.api:app --app-dir src --port 8000
+  cd backend
+  uv sync
+  uv run uvicorn mutatis_mutandis.api:app --app-dir src --port 8000 --reload --reload-dir src
 
   http://localhost:8000/
   http://localhost:8000/docs
