@@ -124,7 +124,7 @@ def search_text_passages(
     *,
     limit: int = 30,
     start_year: int = 0,
-    end_year: int = 3000,
+    end_year: int = 2030,
     window_tokens: int = 40,
     use_year_filter: bool = True,
 ) -> List[dict]:
