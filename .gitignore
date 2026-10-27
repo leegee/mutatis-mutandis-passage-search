@@ -35,4 +35,4 @@ EOF
 out/
 
 # Libs
-src/lib/macberth-huggingface
+backend/src/lib/macberth-huggingface
