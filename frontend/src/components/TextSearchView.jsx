@@ -167,7 +167,7 @@ export function TextSearchView() {
 						</div>
 					</Show>
 
-					<ol class={"hits" + (textStore.status === "loading" ? " dim" : "")}>
+					<ol class={`hits${textStore.status === "loading" ? " dim" : ""}`}>
 						<For each={textStore.hits}>
 							{(hit) => <TextHitCard hit={hit} />}
 						</For>

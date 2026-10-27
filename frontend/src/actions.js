@@ -1,12 +1,12 @@
 import { CONFIG } from "./config.js";
 import { store, setStore, pane, update, newPane } from "./store.js";
 import {
-	toInt,
-	toNum,
-	formatDetail,
-	snippet,
 	CSV_COLS,
 	csvCell,
+	formatDetail,
+	snippet,
+	toInt,
+	toNum,
 } from "./helpers.js";
 import { download } from "./toast.js";
 import { navigate, hrefFor, ROUTES } from "./router.js";
