@@ -53,9 +53,9 @@ class TextSearchRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     query: str = Field(..., min_length=1, max_length=500)
-    start_year: int = Field(0, ge=0, le=3000)
-    end_year: int = Field(3000, ge=0, le=3000)
-    limit: int = Field(30, ge=1, le=200)
+    start_year: int = Field(0, ge=0, le=2030)
+    end_year: int = Field(3000, ge=0, le=2030)
+    limit: int = Field(30, ge=1, le=2000)
     window_tokens: int = Field(
         40,
         ge=5,
