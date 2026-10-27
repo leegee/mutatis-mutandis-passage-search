@@ -1,4 +1,4 @@
-# Semantic Passage Search Example
+# Semantic Passage Search Across Historical Texts
 
 From a Postgres database of document metadata and tokens extracted from TEI XML and plain text, 
 uses Manjavacas and Fonteyn's historical BERT model [MacBERTh](https://aclanthology.org/2021.nlp4dh-1.4/) 
@@ -7,26 +7,15 @@ application.
 
 A sample dataset, and indeed Lance indexes, are available upon request.
 
+    cd backend
+    uv run uvicorn mutatis_mutandis.api:app --app-dir src --port 8000 --reload --reload-dir src
+    cd ../frontend
+    bun dev
+
 ## Motivation
 
 > How can historical references be found to the people - like yours truely - who modern
 > clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?
-
-## Example Use
-
-From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find simillar':
-
-![Initial term](./README/albino_1970-2000AD.png)
-
-Adjust the date range to find historical matches, 0 AD to 1400, and scroll to view references from (translated) Welsh and Judeo-Christian mythology:
-
-![Selection](./README/albino_0-1400AD.png)
-
-![More results](./README/albino_0-1400AD_b.png)
-
-
-
-# Semantic Passage Search Across Historical Texts
 
 ## A research demonstration using contextual embeddings
 
@@ -44,7 +33,13 @@ The objective is not to establish that historical figures described as white, pa
 
 **Step 1 — Begin with modern terminology.**
 
+![From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find simillar'](./README/albino_1970-2000AD.png)
+
 I searched passages dated 1900–2000 using the query `albino` and the `l8` representation (the eighth layer of the MacBERTh model). The system returned 30 results. I selected the highest-ranked passage, from A. J. Psaila’s *Albinism – A Case Report* (1972).
+
+![Adjust the date range to find historical matches, 0 AD to 1400, and scroll to view references from (translated) Welsh and Judeo-Christian mythology:](./README/albino_0-1400AD.png)
+
+![More results](./README/albino_0-1400AD_b.png)
 
 The selected passage discusses forms of albinism, including a description of partial albinism in which hair is yellow or light brown. This provides a modern medical context from which to explore historical descriptions, although the selected passage is only one fragment of a larger text.
 
@@ -129,3 +124,4 @@ This project demonstrates an end-to-end research tool for exploring historical t
 The wider methodological question is how computational retrieval can help researchers find evidence when terminology changes, concepts are expressed indirectly, or relevant passages do not share obvious keywords. Answering that question requires both technical evaluation and substantive interpretation of the retrieved texts.
 
 This repo is extracted from the full project  at [github.com/leegee/mutatis-mutandis](https://github.com/leegee/mutatis-mutandis).
+
