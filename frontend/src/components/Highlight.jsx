@@ -1,0 +1,11 @@
+import { createMemo } from "solid-js";
+import { pane } from "../store.js";
+import { queryTerms, splitHighlight } from "../helpers.js";
+
+export function Highlight(props) {
+  const parts = createMemo(() => {
+    const q = pane(props.paneId)?.lastRequest?.query;
+    return splitHighlight(props.text, q ? queryTerms(q) : []);
+  });
+  return <span>{parts().map((s) => (s.m ? <mark>{s.t}</mark> : s.t))}</span>;
+}

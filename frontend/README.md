@@ -1,39 +1,8 @@
 # Passage Search UI
 
-SolidJS SPA for semantic passage search. No build step required.
+Vite-based SolidJS SPA for semantic passage search.
 
 Ideally rewrite to use Vite, TS and JSX
-
-## Layout
-
-```
-passage-search-ui/
-├── index.html              # Shell + import map + entry script
-├── css/
-│   └── styles.css          # All styles (light/dark)
-├── js/
-│   ├── main.js             # render() entry
-│   ├── config.js           # URL query params / constants (?api, ?panes)
-│   ├── router.js           # minimal hash router (extendable)
-│   ├── store.js            # createStore + pane helpers
-│   ├── helpers.js          # pure utilities (highlight, bins, CSV…)
-│   ├── toast.js            # toast + clipboard + download
-│   ├── actions.js          # search, negatives, panes, export, health
-│   ├── overlaps.js         # cross-pane document overlap detection
-│   └── components/
-│       ├── App.js          # route switch + persistence effect
-│       ├── SearchView.js   # multi-pane search UI (route: / and /search)
-│       ├── NotFound.js     # fallback for unknown hashes
-│       ├── Pane.js
-│       ├── SearchForm.js
-│       ├── Negatives.js
-│       ├── StatusBar.js
-│       ├── Histogram.js
-│       ├── Results.js
-│       ├── HitCard.js
-│       └── Highlight.js
-└── README.md
-```
 
 ## Routing
 
