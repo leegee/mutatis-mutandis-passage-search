@@ -1,6 +1,8 @@
 # Passage Search UI
 
-Single-page SolidJS app for semantic passage search. No build step required.
+SolidJS SPA for semantic passage search. No build step required.
+
+Ideally rewrite to use Vite, TS and JSX
 
 ## Layout
 

@@ -127,3 +127,5 @@ To that end, the system can be extended to add further models trained on further
 This project demonstrates an end-to-end research tool for exploring historical texts through contextual semantic search. Its contribution at this stage is a working, inspectable retrieval workflow and a concrete example of how a modern query can lead to potentially relevant material in medieval literature.
 
 The wider methodological question is how computational retrieval can help researchers find evidence when terminology changes, concepts are expressed indirectly, or relevant passages do not share obvious keywords. Answering that question requires both technical evaluation and substantive interpretation of the retrieved texts.
+
+This repo is extracted from the full project  at [github.com/leegee/mutatis-mutandis](https://github.com/leegee/mutatis-mutandis).
