@@ -67,7 +67,9 @@ if _origins:
     )
 
 
-STATIC_DIR = Path(__file__).parent / "static"
+# FRONTEND_DIR = Path(__file__).parent / "static"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+FRONTEND_DIR = REPO_ROOT / "frontend"
 
 
 def get_service(request: Request) -> PassageSearchService:
@@ -138,8 +140,8 @@ def text_search(req: TextSearchRequest, service: PassageSearchService = Depends(
 
 # --- Web UI -----------------------------------------------------------------
 # Same origin as the API, so the page needs no CORS configuration.
-if STATIC_DIR.is_dir():
-    app.mount("/ui", StaticFiles(directory=STATIC_DIR, html=True), name="ui")
+if FRONTEND_DIR.is_dir():
+    app.mount("/ui", StaticFiles(directory=FRONTEND_DIR, html=True), name="ui")
 
     @app.get("/", include_in_schema=False)
     def root():
