@@ -22,8 +22,10 @@ Run the search servers:
 
 ## Motivation
 
-> How can historical references be found to the people - like yours truely - who modern
-> clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?
+> We all declare for liberty but in using the same word we do not all mean the same thing
+> -- Abraham Lincoln, Address at the Sanitary Fair in Baltimore, Maryland, on April 18, 1864
+
+**How can historical references be found to the people - like yours truely - who modern clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?**
 
 ## A research demonstration using contextual embeddings
 
