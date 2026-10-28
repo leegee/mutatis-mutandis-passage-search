@@ -65,6 +65,14 @@ Each final output shard contains passage metadata and the three embedding vector
 
 **Note:** `RESUME_FROM_DOC` and `STOP_AFTER_DOC` use zero-based document indices, with the stop index inclusive. If processing only a subset of documents, ensure the checkpoint set is complete before assembling a final shard; otherwise, assembly may omit documents without checkpoints.
 
+## To Do
+
+* Unweighted mean. In 40 words, function words contribute as much as “whyte” or “wolle”. Try down-weighting stopwords, or weighting by inverse frequency (SIF-style).
+
+* What counts as a “word”. Check that punctuation tokens aren’t counted in the 40-word window. Empty tokens are replaced with “.” in the script.
+
+* Storage. One 768-dimension fp16 vector is about 1.5 KB, and there is one passage per 20 words. That is roughly 7–8 GB per representation per 100 million words. A billion words would be about 75 GB per representation, and this script stores three.
+
 """
 
 import os
