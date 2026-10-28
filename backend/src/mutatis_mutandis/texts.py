@@ -1,5 +1,5 @@
 """
-mutatis_mutandis/texts.py
+passage_search_pipeline/texts.py
 
 Postgres lookup of passage text and document metadata.
 
