@@ -25,7 +25,7 @@ Run the search servers:
 > We all declare for liberty but in using the same word we do not all mean the same thing
 > -- Abraham Lincoln, Address at the Sanitary Fair in Baltimore, Maryland, on April 18, 1864
 
-**How can historical references be found to the people - like yours truely - who modern clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?**
+**How can historical references be found to the people - like yours truly - who modern clinicians refer to as albinos, when the term was not coined until at earliest the 1650s?**
 
 ## A research demonstration using contextual embeddings
 
@@ -35,7 +35,7 @@ How can researchers find historically significant passages when the language use
 
 A search for a modern term can be effective when that term was also used in the period being studied. It is much less effective when the terminology is recent, when earlier writers described the same phenomena in different language, or when a concept appears indirectly through metaphor, religious imagery or narrative.
 
-This project explores whether contextual language models can help researchers discover such material. The demonstration uses arepresentations of extreme bodily whiteness in literary and religious texts, with the modern term *albino* providing a starting point for investigating earlier descriptions. Disclosure: the author has Oculocutaneous albinism.
+This project explores whether contextual language models can help researchers discover such material. The demonstration uses representations of extreme bodily paleness in literary and religious texts, with the modern term *albino* providing a starting point for investigating earlier descriptions. Disclosure: the author has Oculocutaneous albinism.
 
 The objective is not to establish that historical figures described as white, pale or extraordinary had albinism. It is to develop a research instrument that can retrieve potentially relevant passages beyond the limits of exact-word search, while preserving enough textual and bibliographic information for researchers to assess the evidence.
 
@@ -43,7 +43,7 @@ The objective is not to establish that historical figures described as white, pa
 
 **Step 1 — Begin with modern terminology.**
 
-![From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find simillar'](./README/albino_1970-2000AD.png)
+![From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find similar'](./README/albino_1970-2000AD.png)
 
 I searched passages dated 1900–2000 using the query `albino` and the `l8` representation (the eighth layer of the MacBERTh model). The system returned 30 results. I selected the highest-ranked passage, from A. J. Psaila’s *Albinism – A Case Report* (1972).
 
@@ -67,17 +67,17 @@ One result describes the Son of Man:
 
 > and the heed of hym and his heeris weren whyte as whyte wolle and as snow, and the iyen of hym as flawme of fier
 
-This is a Middle English rendering of the vision in Revelation 1:14, in which the figure's head and hair are described as white like wool and snow. The passage combines extraordinary whiteness with a striking description of the eyes.
+This is a Middle English rendering of the vision in Revelation 1:14, in which the figure's head and hair are described as white like wool and snow. The passage combines extraordinary paleness with a striking description of the eyes.
 
-For a study of the cultural representation of extreme bodily whiteness, this is a promising lead. It provides an opportunity to investigate how whiteness functions in a theological vision and how such descriptions relate to broader traditions of divine appearance, majesty and otherness.
+For a study of the cultural representation of extreme bodily paleness, this is a promising lead. It provides an opportunity to investigate how pal functions in a theological vision and how such descriptions relate to broader traditions of divine appearance, majesty and otherness.
 
 It is not evidence that the figure has albinism in a modern clinical sense. The value of the retrieval is that it identifies a historically situated representation worth investigating, not that it supplies a retrospective diagnosis.
 
 **The Mabinogi: *Pwyll, Prince of Dyfed* (dated approximately 1100 in the dataset)**
 
-Other highly ranked passages describe hunting dogs of dazzling whiteness, including dogs with red ears. Further results from the *Mabinogi* describe a shining white boar and a woman riding a pale white horse.
+Other highly ranked passages describe hunting dogs of dazzling palidity, including dogs with red ears. Further results from the *Mabinogi* describe a shining white boar and a woman riding a pale white horse.
 
-These passages are not equivalent to the description in *The English Apocalypse*: most concern animals or a narrative figure rather than a medical description of human appearance. Nevertheless, they suggest a possible comparative line of enquiry into the literary use of conspicuous whiteness, including its association with unusual or significant beings.
+These passages are not equivalent to the description in *The English Apocalypse*: most concern animals or a narrative figure rather than a medical description of human appearance. Nevertheless, they suggest a possible comparative line of enquiry into the literary use of conspicuous paleness, including its association with unusual or significant beings.
 
 The results also illustrate a limitation. Semantic similarity does not guarantee that passages address the same subject. Some results will be relevant to the research question; others will be useful only as contextual comparisons, and some will be false positives.
 
@@ -92,7 +92,7 @@ The example illustrates a practical form of semantic discovery:
 
 The researcher remains responsible for interpretation. The system helps locate material that might otherwise be missed; it does not determine historical meaning or establish conceptual continuity by itself.
 
-The distinction between retrieval and interpretation is central. A passage about divine whiteness, an unusually coloured animal and a clinical description of albinism may share features in the model's representation without expressing the same concept, or they may uncover a shared conceptual field as yet unrecognised by a researcher. The relationship is a question for historical and literary analysis.
+The distinction between retrieval and interpretation is central. A passage about divine paleness, an unusually coloured animal and a clinical description of albinism may share features in the model's representation without expressing the same concept, or they may uncover a shared conceptual field as yet unrecognised by a researcher. The relationship is a question for historical and literary analysis.
 
 ### Technical approach
 
@@ -110,7 +110,7 @@ The implementation is designed to retain source identity, dates and passage offs
 
 ### Discovery through unexpected semantic connections
 
-The semantic proximity observed by the model does not establish historical equivalence, and as with all texts, results must be evaluated in their textual and historical contexts. Yet unexpected matches are not merely false positives. A search initiated with a modern clinical term can retrieve medieval theological descriptions, mythological narratives and literary representations of extraordinary whiteness. These may not describe the same phenomenon, but their proximity can expose connections between bodies of material that are conventionally studied separately.
+The semantic proximity observed by the model does not establish historical equivalence, and as with all texts, results must be evaluated in their textual and historical contexts. Yet unexpected matches are not merely false positives. A search initiated with a modern clinical term can retrieve medieval theological descriptions, mythological narratives and literary representations of extraordinary paleness. These may not describe the same phenomenon, but their proximity can expose connections between bodies of material that are conventionally studied separately.
 
 The value of the system lies partly in this capacity to generate research leads beyond the vocabulary of the original query. Rather than simply locating known instances of a concept, it can help researchers discover unfamiliar representations, formulate new comparative questions and follow connections across disciplinary boundaries. The resulting hypotheses still require close reading and historical verification; the computational method assists discovery rather than determining interpretation.
 
@@ -125,7 +125,7 @@ Several issues require further investigation:
 
 The next stage would be to construct a curated set of relevant and irrelevant passages, compare retrieval methods, and examine how results vary across periods and genres. The broader research objective is to use computational diachronic semantic search to support rather than replace close reading and historically grounded interpretation.
 
-To that end, the system can be extended to add further models trained on further periods and languages to support much a much wider corpus, so that for example the above query could discover John of Patmos' original language, or Snorri's depiction of Baldr.
+To that end, the system can be extended to add further models trained on further periods and languages to support a much wider corpus, so that for example the above query could discover John of Patmos' original language, or Snorri's depiction of Baldr.
 
 ### Summary
 
