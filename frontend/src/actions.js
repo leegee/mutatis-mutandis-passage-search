@@ -232,3 +232,8 @@ export function exportPane(id, kind) {
 		download(`${base}.csv`, `\ufeff${rows.join("\r\n")}`, "text/csv");
 	}
 }
+
+export function resetYears(id) {
+	update(id, "form", { startYear: "0", endYear: "3000" });
+	runSearch(id);
+}
