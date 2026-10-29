@@ -32,7 +32,7 @@ export const SHARED_PARAM_KEYS = ["q", "from", "to", "limit"];
 
 const DEFAULTS = {
 	from: "0",
-	to: "3000",
+	to: "2030",
 	limit: "30",
 	rep: "l8",
 	beta: "0.5",

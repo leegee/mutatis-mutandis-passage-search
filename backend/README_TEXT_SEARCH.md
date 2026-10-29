@@ -8,7 +8,7 @@
 {
   "query": "white hair",
   "start_year": 0,
-  "end_year": 3000,
+  "end_year": 2030,
   "limit": 30,
   "window_tokens": 40
 }

@@ -9,11 +9,17 @@ export function newPane(seed = {}) {
 		id: `p${n}`,
 		label: seed.label ?? String.fromCharCode(65 + ((n - 1) % 26)),
 		// What we are searching for: free text, or "passages like this one".
-		source: { mode: "text", text: "", vectorId: "", vectorLabel: "", ...seed.source },
+		source: {
+			mode: "text",
+			text: "",
+			vectorId: "",
+			vectorLabel: "",
+			...seed.source,
+		},
 		form: {
 			representation: "l8",
 			startYear: "0",
-			endYear: "3000",
+			endYear: "2030",
 			limit: "30",
 			beta: "0.5",
 			overfetch: "5",
@@ -51,4 +57,5 @@ export const [store, setStore] = createStore({
 export const pane = (id) => store.panes.find((p) => p.id === id);
 
 /** Shallow-merge into one pane (or into pane.<key> when a path is given). */
-export const update = (id, ...rest) => setStore("panes", (p) => p.id === id, ...rest);
+export const update = (id, ...rest) =>
+	setStore("panes", (p) => p.id === id, ...rest);
