@@ -7,6 +7,9 @@ application.
 
 A sample dataset, and indeed Lance indexes, are available upon request.
 
+> [!NOTE]  
+> Superceded by [mutatis-mutandis-ensemble-extract](https://github.com/leegee/mutatis-mutandis-ensemble-extract)
+
 ## Usage Synopsis
 
 To add a doc to the corpus:
