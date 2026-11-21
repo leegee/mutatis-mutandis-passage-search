@@ -44,19 +44,15 @@ The objective is not to establish that historical figures described as exception
 
 ### Worked reverse diachronic example: from a modern medical text to medieval literature
 
-**Step 1 — Begin with modern terminology.**
-
-![From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find similar'](./README/albino_1970-2000AD.png)
+#### Step 1: Begin with modern terminology.
 
 I used the system to search passages from the period 1900–2000 using the query `albino` and the `l8` representation (the eighth layer of the MacBERTh model). The system returned 30 results.
 
-![Adjust the date range to find historical matches, 0 AD to 1400, and scroll to view references from (translated) Welsh and Judeo-Christian mythology:](./README/albino_0-1400AD.png)
+![From an initial search for the term 'albino', find the top result, a 1972 medical text, and select 'find similar'](./README/albino_1970-2000AD.png)
 
 I selected the highest-ranked passage, one from A. J. Psaila’s *Albinism – A Case Report* (1972) that discusses forms of albinism, including a description of partial albinism in which hair is yellow or light brown. This provides a modern medical context from which to explore historical descriptions.
 
-![More results](./README/albino_0-1400AD_b.png)
-
-**Step 2 — Use the passage as a semantic query.**
+#### Step 2: Use the passage as a semantic query.
 
 Rather than searching for the word *albino* again in an earlier time frame, I selected the system’s "find similar” function that uses the stored vector representation of the selected passage to retrieve other passages with similar representations.
 
@@ -64,9 +60,11 @@ The search was restricted to the period of interest, 1000–1500. The system ret
 
 Among the highest-ranked results were passages from two very different literary and religious sources.
 
+![Adjust the date range to find historical matches, 0 AD to 1400, and scroll to view references from (translated) Welsh and Judeo-Christian mythology:](./README/albino_0-1400AD.png)
+
 **The English Apocalypse (approximately 1350 in the dataset)**
 
-One result describes the Son of Man:
+One result, from *The English Apocalypse*, describes the Son of Man:
 
 > and the heed of hym and his heeris weren whyte as whyte wolle and as snow, and the iyen of hym as flawme of fier
 
@@ -78,11 +76,11 @@ It is of course not presented as evidence that the figure has albinism in a mode
 
 **The Mabinogi: *Pwyll, Prince of Dyfed* (dated approximately 1100 in the dataset)**
 
-Other highly ranked passages describe hunting dogs of dazzling palidity, including dogs with red ears. Further results from the *Mabinogi* describe a shining white boar and a woman riding a pale white horse.
+Some other highly ranked passages come from translations of the Weslh *Mabinogi*, and describe hunting dogs of dazzling palidity, including dogs with red ears. Further results from the same text  describe a shining white boar and a woman riding a pale white horse.
 
-These passages are not equivalent to the description in *The English Apocalypse*: most concern animals or a narrative figure rather than a medical description of human appearance. Nevertheless, they suggest a possible comparative line of enquiry into the literary use of conspicuous paleness, including its association with unusual or significant beings.
+These passages are not equivalent to the source vector that describes people with albinism, nor equivalent to the description in *The English Apocalypse*, but they do provide evidence of literary use of conspicuous paleness including its association with unusual or significant beings.
 
-The results also illustrate a limitation. Semantic similarity does not guarantee that passages address the same subject. Some results will be relevant to the research question; others will be useful only as contextual comparisons, and some will be false positives.
+The results also illustrate what some may consider a limitation, that semantic similarity does not guarantee that results address the same subject. Some results will be relevant to the research question; others will be useful only as contextual comparisons, and some will be false positives.
 
 ### What the demonstration establishes
 
@@ -95,7 +93,7 @@ The example illustrates a practical form of semantic discovery:
 
 The researcher remains responsible for interpretation. The system helps locate material that might otherwise be missed; it does not determine historical meaning or establish conceptual continuity by itself.
 
-The distinction between retrieval and interpretation is central. A passage about divine paleness, an unusually coloured animal and a clinical description of albinism may share features in the model's representation without expressing the same concept, or they may uncover a shared conceptual field as yet unrecognised by a researcher. The relationship is a question for historical and literary analysis.
+The distinction between retrieval and interpretation is central. A passage about divine paleness, an unusually coloured animal and a clinical description of albinism may share features in the model's representation without expressing the same concept, or they may uncover a shared conceptual field as yet unrecognised by a researcher. That relationship is itself a question for analysis.
 
 ### Technical approach
 
