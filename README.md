@@ -1,13 +1,13 @@
 # Semantic Passage Search Across Historical Texts
 
-From a Postgres database of document metadata and tokens extracted from TEI XML and plain text, 
-uses Manjavacas and Fonteyn's historical BERT model [MacBERTh](https://aclanthology.org/2021.nlp4dh-1.4/) 
-and Google Colab to create embeddings that are stored in and searched through Lance via a Python FastAPI/SolidJS 
+From a Postgres database of document metadata and tokens extracted from TEI XML and plain text,
+uses Manjavacas and Fonteyn's historical BERT model [MacBERTh](https://aclanthology.org/2021.nlp4dh-1.4/)
+and Google Colab to create embeddings that are stored in and searched through Lance via a Python FastAPI/SolidJS
 application.
 
 A sample dataset, and indeed Lance indexes, are available upon request.
 
-> [!NOTE]  
+> [!NOTE]
 > Superceded by [mutatis-mutandis-ensemble-extract](https://github.com/leegee/mutatis-mutandis-ensemble-extract)
 
 ## Usage Synopsis
@@ -36,11 +36,11 @@ Run the search servers:
 
 How can researchers find historically significant passages when the language used to describe a subject changes over time?
 
-A search for a modern term can be effective when that term was also used in the period being studied. It is much less effective when the terminology is recent, when earlier writers described the same phenomena in different language, or when a concept appears indirectly through metaphor, religious imagery or narrative.
+A search for a modern term can be effective when that term was also used in the period of study. It is much less effective when the terminology is recent, when earlier writers described the same phenomena in different language, or when a concept appears indirectly through metaphor, religious imagery or narrative.
 
 This project explores whether contextual language models can help researchers discover such material. The demonstration uses representations of extreme bodily paleness in literary and religious texts, with the modern term *albino* providing a starting point for investigating earlier descriptions. Disclosure: the author has Oculocutaneous albinism.
 
-The objective is not to establish that historical figures described as white, pale or extraordinary had albinism. It is to develop a research instrument that can retrieve potentially relevant passages beyond the limits of exact-word search, while preserving enough textual and bibliographic information for researchers to assess the evidence.
+The objective is not to establish that historical figures described as exceptionalily pale had albinism but to develop a research instrument that can retrieve potentially relevant passages beyond the limits of exact-word search, while preserving enough textual and bibliographic information for researchers to assess the evidence.
 
 ### Worked reverse diachronic example: from a modern medical text to medieval literature
 
