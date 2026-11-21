@@ -107,7 +107,7 @@ The demonstration combines established language-modelling and vector-search comp
 
 The embedding workflow runs separately in Google Colab, with per-document checkpoints and validation to support resumable processing. The resulting vectors can then be incorporated into the local search index.
 
-The implementation is designed to retain source identity, dates and passage offsets throughout retrieval to allow computational results to be inspected as documentary evidence rather than treated as an opaque list of similarity scores.
+The implementation is designed to retain source identity, dates and passage offsets throughout retrieval to allow computational results to be inspected as documentary evidence.
 
 ### Discovery through unexpected semantic connections
 
