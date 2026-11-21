@@ -101,13 +101,13 @@ The demonstration combines established language-modelling and vector-search comp
 
 - **Corpus and metadata:** Texts are represented in a PostgreSQL database, with document metadata and token-level information extracted from TEI XML and plain-text sources.
 - **Passage construction:** Text is divided into overlapping windows of 40 words, with a 20-word hop. Token offsets and document metadata are retained so retrieved passages can be traced back to their sources.
-- **Embeddings:** Passages are encoded using MacBERTh, a BERT model developed for historical language. The current demonstration uses 768-dimensional representations derived from the model's eighth hidden layer.
+- **Embeddings:** Passages are encoded using [MacBERTh](https://search.brave.com/go/v1#AQC_IKPXnKN6awGdUAH8vqNxitsUWUS-sE4VKgjHgRViI3szX9BLfqAgP0RTYT6f3vgU-MQzL1BNnUtlCUypTfC8PH5ee0fXFNAFoTnj3rNkZqovw5Fyf_UdSmfIwcPQTUxsnV1YsYHpGfR9JKIt64zbb9mF3AkZ0-YGl5PqcVYiXxHLV5x5Xh-Nx55GF-nyOIFZ7hWr4UqVHs37zgE), a BERT model developed for historical language. The current demonstration uses 768-dimensional representations derived from the model's eighth hidden layer.
 - **Indexing and retrieval:** Passage vectors are stored in Lance, supporting vector search alongside chronological filtering and retrieval by an existing passage vector.
 - **Application:** A Python retrieval layer is exposed through FastAPI and a command-line interface, with a SolidJS search interface for interactive exploration.
 
 The embedding workflow runs separately in Google Colab, with per-document checkpoints and validation to support resumable processing. The resulting vectors can then be incorporated into the local search index.
 
-The implementation is designed to retain source identity, dates and passage offsets throughout retrieval. These are not incidental details: they allow computational results to be inspected as documentary evidence rather than treated as an opaque list of similarity scores.
+The implementation is designed to retain source identity, dates and passage offsets throughout retrieval to allow computational results to be inspected as documentary evidence rather than treated as an opaque list of similarity scores.
 
 ### Discovery through unexpected semantic connections
 
