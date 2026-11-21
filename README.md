@@ -80,8 +80,6 @@ Some other highly ranked passages come from translations of the Weslh *Mabinogi*
 
 These passages are not equivalent to the source vector that describes people with albinism, nor equivalent to the description in *The English Apocalypse*, but they do provide evidence of literary use of conspicuous paleness including its association with unusual or significant beings.
 
-The results also illustrate what some may consider a limitation, that semantic similarity does not guarantee that results address the same subject. Some results will be relevant to the research question; others will be useful only as contextual comparisons, and some will be false positives.
-
 ### What the demonstration establishes
 
 The example illustrates a practical form of semantic discovery:
@@ -113,7 +111,9 @@ The implementation is designed to retain source identity, dates and passage offs
 
 The semantic proximity observed by the model does not establish historical equivalence, and as with all texts, results must be evaluated in their textual and historical contexts. Yet unexpected matches are not merely false positives. A search initiated with a modern clinical term can retrieve medieval theological descriptions, mythological narratives and literary representations of extraordinary paleness. These may not describe the same phenomenon, but their proximity can expose connections between bodies of material that are conventionally studied separately.
 
-The value of the system lies partly in this capacity to generate research leads beyond the vocabulary of the original query. Rather than simply locating known instances of a concept, it can help researchers discover unfamiliar representations, formulate new comparative questions and follow connections across disciplinary boundaries. The resulting hypotheses still require close reading and historical verification; the computational method assists discovery rather than determining interpretation.
+*\[TODO Thomas White?]* To answer whether images of The Son of Man or magical creatures in Welsh myth are relevant to clinical descriptions of people with albinism, one might best first address the definition of the albinism itself. Is it merely a term to identify a visible difference, or does that constrain both those observed as well as awareness of historical observations?
+
+The value of the system lies largely in this capacity to generate research leads beyond the vocabulary of the original query. Rather than simply locating known instances of a concept, it can help researchers discover unfamiliar representations, formulate new comparative questions and follow connections across disciplinary boundaries. The resulting hypotheses naturally require close reading and historical verification.
 
 ### Limitations and next steps
 
@@ -121,18 +121,17 @@ This is a working proof of concept, not a validated claim that semantic retrieva
 
 Several issues require further investigation:
 
-- **Retrieval design:** Different passage lengths, embedding representations and ranking strategies produce materially different results. This project's parent project build ensemble embeddings across a larger corpus with a consequentially larger footprint and cost.
+- **Retrieval design:** Different passage lengths, embedding representations and ranking strategies produce materially different results. This can be tested using the three representational forms provided (last eight layers, mean of the last four layers, and the final layer alone). The [follow-up project](mutatis-mutandis-ensemble-extract) revives the use of single word dynamic embeddings explored in the [parent project](https://github.com/leegee/mutatis-mutandis).
 - **Evaluation:** The method needs systematic comparison with keyword-based retrieval and assessment of results by a human researcher.
 
-The next stage would be to construct a curated set of relevant and irrelevant passages, compare retrieval methods, and examine how results vary across periods and genres. The broader research objective is to use computational diachronic semantic search to support rather than replace close reading and historically grounded interpretation.
+The next stage would be to construct a curated set of relevant and irrelevant passages, compare retrieval methods, and examine how results vary across periods and genres, and compare against simple lexical/lemma search. The broader research objective is to use computational diachronic semantic search to support rather than replace close reading and historically grounded interpretation.
 
 To that end, the system can be extended to add further models trained on further periods and languages to support a much wider corpus, so that for example the above query could discover John of Patmos' original language, or Snorri's depiction of Baldr.
 
 ### Summary
 
-This project demonstrates an end-to-end research tool for exploring historical texts through contextual semantic search. Its contribution at this stage is a working, inspectable retrieval workflow and a concrete example of how a modern query can lead to potentially relevant material in medieval literature.
+This project demonstrates an end-to-end research tool for exploring historical texts through contextual semantic search. Its contribution at this stage is a working, inspectable retrieval workflow and a concrete example of how a modern query can lead to relevant material in medieval literature.
 
 The wider methodological question is how computational retrieval can help researchers find evidence when terminology changes, concepts are expressed indirectly, or relevant passages do not share obvious keywords. Answering that question requires both technical evaluation and substantive interpretation of the retrieved texts.
 
-This repo is extracted from the full project  at [github.com/leegee/mutatis-mutandis](https://github.com/leegee/mutatis-mutandis).
 
