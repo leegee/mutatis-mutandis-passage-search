@@ -58,9 +58,9 @@ I selected the highest-ranked passage, one from A. J. Psaila’s *Albinism – A
 
 **Step 2 — Use the passage as a semantic query.**
 
-Rather than searching for the word *albino* again, I selected the system’s “find similar” function. This uses the stored vector representation of the selected passage to retrieve other passages with similar representations.
+Rather than searching for the word *albino* again in an earlier time frame, I selected the system’s "find similar” function that uses the stored vector representation of the selected passage to retrieve other passages with similar representations.
 
-I restricted the search to the period 1000–1500. The system returned 21 results from the available corpus and date range.
+The search was restricted to the period of interest, 1000–1500. The system returned 21 results from the available corpus and date range.
 
 Among the highest-ranked results were passages from two very different literary and religious sources.
 
@@ -72,9 +72,9 @@ One result describes the Son of Man:
 
 This is a Middle English rendering of the vision in Revelation 1:14, in which the figure's head and hair are described as white like wool and snow. The passage combines extraordinary paleness with a striking description of the eyes.
 
-For a study of the cultural representation of extreme bodily paleness, this is a promising lead. It provides an opportunity to investigate how pal functions in a theological vision and how such descriptions relate to broader traditions of divine appearance, majesty and otherness.
+For a study of the cultural representation of extreme bodily paleness this is a promising lead. It provides an opportunity to investigate how paleness functions in a theological vision and how such descriptions relate to broader traditions of divine appearance, majesty and otherness.
 
-It is not evidence that the figure has albinism in a modern clinical sense. The value of the retrieval is that it identifies a historically situated representation worth investigating, not that it supplies a retrospective diagnosis.
+It is of course not presented as evidence that the figure has albinism in a modern clinical sense - the value of the retrieval is that it identifies a historically situated representation worth investigating.
 
 **The Mabinogi: *Pwyll, Prince of Dyfed* (dated approximately 1100 in the dataset)**
 
