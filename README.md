@@ -11,7 +11,7 @@ A sample dataset, and indeed Lance indexes, are available upon request.
 > Superceded by [mutatis-mutandis-ensemble-extract](https://github.com/leegee/mutatis-mutandis-ensemble-extract)
 
 > [!NOTE]
-> Supercedesby [mutatis-mutandis](https://github.com/leegee/mutatis-mutandis)
+> Superceded by [mutatis-mutandis](https://github.com/leegee/mutatis-mutandis)
 
 ## Usage Synopsis
 
